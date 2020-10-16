@@ -16,7 +16,7 @@ import Button from "components/CustomButtons/Button.js";
 import { Link } from 'react-router-dom';
 
 
-import {bugs} from "variables/general.js";
+import {tareas} from "variables/general.js";
 
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 
@@ -42,7 +42,7 @@ export default function Dashboard() {
               <Tasks
                 checkedIndexes={[0, 3]}
                 tasksIndexes={[0, 1, 2, 3]}
-                tasks={bugs}
+                tasks={tareas}
               />
             </CardBody>
             <CardFooter>

@@ -2,11 +2,18 @@
     "debug.allowBreakpointsEverywhere": true,
     "files.autoGuessEncoding": true,
     "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
         "project.escfg": true,
         "**/.vscode": true,
         "compile_commands.json": true,
         "*.hrccproj": true,
         "*.sln": true,
-        "*.suo": true
-    }
+        "*.suo": true,
+        ".history": true
+    },
+    "explorerExclude.backup": null
 }
