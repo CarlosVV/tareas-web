@@ -1,0 +1,9 @@
+export const ADD_TAREA = "ADD_TAREA"
+export const EDIT_TAREA = "EDIT_TAREA"
+export const DELETE_TAREA = "DELETE_TAREA"
+
+export const SET_IDENTIFICADOR = "SET_IDENTIFICADOR"
+export const SET_DESCRIPCION = "SET_DESCRIPCION"
+export const SET_FECHA_CREACION = "SET_FECHA_CREACION"
+export const SET_VIGENTE = "SET_VIGENTE"
+export const SET_ERROR = "SET_ERROR"

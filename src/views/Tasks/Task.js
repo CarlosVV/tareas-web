@@ -39,26 +39,25 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function Task(props) {
+export default function Task() {
   const classes = useStyles();
-  const [descripcion, setDescripcion] = React.useState('');
-  //const [checked, setChecked] = React.useState([...props.checkedIndexes]);
-  const handleToggle = value => {
-    //const currentIndex = checked.indexOf(value);
-    //const newChecked = [...checked];
-    //if (currentIndex === -1) {
-    //  newChecked.push(value);
-    //} else {
-    //  newChecked.splice(currentIndex, 1);
-    //}
-    //setChecked(newChecked);
+
+  const [state, setState] = React.useState({
+      identificador: 0,
+      descripcion: '',
+      fecha_creacion:'2019-05-24T10:30',
+      vigente: true
+  });
+
+  const handleChange = (event) => {
+    setState({...state, [event.target.id]: event.target.value});
   };
 
-  const saveTarea = () => {
-
-    alert("grabado"+ descripcion);
+  const handleAddTarea = () => {    
+    const {identificador, descripcion, fecha_creacion, vigente} = state;
+    console.log(identificador, descripcion, fecha_creacion, vigente);
   };
-
+  
   return (
     <div>
       <GridContainer>
@@ -74,9 +73,9 @@ export default function Task(props) {
                 <GridItem xs={12} sm={12} md={2}>
                     <CustomInput
                       labelText="Identificador (disabled)"
-                      id="identificador-disabled"
+                      id="identificador"
                       formControlProps={{
-                        fullWidth: true
+                        fullwidth: "true"
                       }}
                       inputProps={{
                         disabled: true
@@ -86,27 +85,26 @@ export default function Task(props) {
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
-                    <CustomInput
-                      labelText="Descripcion"
-                      id="descripcion"
-                      value={descripcion}
-                      onInput={e => setDescripcion(e.target.value)}
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
+                    <TextField
+                        required
+                        onChange={handleChange}
+                        id="descripcion"
+                        label="Descripcion"
+                        placeholder='Descripcion'                        
+                    />                    
                   </GridItem>               
                 </GridContainer>
               <GridContainer>              
                   <GridItem xs={12} sm={12} md={4}>
                     <TextField
-                      id="fecha-creacion"
+                      id="fecha_creacion"
                       label="Fecha Hora Creacion"
                       type="datetime-local"
+                      onChange={handleChange}
                       defaultValue="2019-05-24T10:30"
                       className={classes.textField}
                       InputLabelProps={{
-                        fullWidth: true
+                        fullwidth: "true"
                       }}
                     />
                   </GridItem>
@@ -116,14 +114,14 @@ export default function Task(props) {
                   <FormControlLabel
                      value="Vigente"
                      control={
-                       <Checkbox  id="vigente"
+                       <Checkbox  id="vigente"                         
                          defaultChecked={true}
-                         onClick={() => handleToggle()}
+                         onChange={handleChange}
                          checkedIcon={<Check className={classes.checkedIcon} />}
                          icon={<Check className={classes.uncheckedIcon} />}/>
                      }
                      label="Vigente"
-                     labelPlacement="vigente"
+                     labelPlacement="end"
                      classes={{
                       checked: classes.checked,
                       root: classes.root
@@ -134,7 +132,7 @@ export default function Task(props) {
             </CardBody>
             <CardFooter>
               <Button color="primary"
-              onClick={() => saveTarea()}
+              onClick={handleAddTarea}
               startIcon={<SaveIcon />}
               >Crear Tarea</Button>
             </CardFooter>

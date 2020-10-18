@@ -27,6 +27,11 @@ const MyLink = React.forwardRef((props, ref) => <Link to="/admin/task" {...props
 
 export default function Dashboard() {
   const classes = useStyles();
+
+  fetch('http://localhost:8080/v1/tareas/')
+    .then(response => response.json())
+    .then(data => console.log(data));
+
   return (
     <div>
       <GridContainer>
